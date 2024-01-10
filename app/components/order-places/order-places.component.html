@@ -1,0 +1,9 @@
+<form [formGroup]="formOrders!" (ngSubmit)="okForm()">
+    <input type="number" placeholder="מספר מקומות" formControlName="countOfPlaces" /><br>
+    <div *ngIf="getCountOfPlaces.invalid && (getCountOfPlaces.dirty||getCountOfPlaces.touched)">
+        <p *ngIf="getCountOfPlaces.hasError('required')">שדה חובה</p>
+        <p *ngIf="getCountOfPlaces.hasError('max') && !getCountOfPlaces.hasError('required')">לא ניתן לבצע הזמנה, לא נותרו מספיק מקומות בטיול</p>
+    </div>
+    <input type="submit" [disabled]="formOrders.invalid" />
+</form>
+<router-outlet></router-outlet>

@@ -1,0 +1,38 @@
+<input type="button" (click)="personalDetails()" value="עריכת פרטים אישיים" [hidden]="this.myDetails" />
+<app-sign-in *ngIf="this.myDetails" [isEdit]="true"></app-sign-in>
+
+<input type="button" (click)="deleteUser()" value="ביטול רישום" />
+
+<input type="button" (click)="AllmyOrders()" value="להזמנות שלי" [hidden]="this.myOrders" />
+<select [(ngModel)]="this.choosen" (change)="filterNowAndThen()">
+    <option>כל הטיולים</option>
+    <option>טיולים מהעבר</option>
+    <option>טיולים מהעתיד</option>
+</select>
+<select [(ngModel)]="this.priceChoose" (change)="filterByPrice()">
+    <option>מחיר מהנמוך לגבוה</option>
+    <option>מחיר מהגבוה לנמוך</option>
+</select>
+<table class="table" *ngIf="this.myOrders">
+    <thead class="table-dark">
+        <tr>
+            <th>קוד טיול</th>
+            <th>יעד הטיול</th>
+            <th>תאריך טיול</th>
+            <th>שעת יציאה</th>
+            <th>משך טיול בשעות</th>
+            <th>מחיר</th>
+            <th>סוג</th>
+        </tr>
+        <tr *ngFor="let order of this.allMyTrip">
+            <td>{{order.CodeTrip}}</td>
+            <th>{{order.Target}}</th>
+            <th>{{order.DateTrip}}</th>
+            <th>{{order.LeavingTime}}</th>
+            <th>{{order.DurationInHour}}</th>
+            <th>{{order.Price}}</th>
+            <th>{{order.typeName}}</th>
+        </tr>
+    </thead>
+</table>
+

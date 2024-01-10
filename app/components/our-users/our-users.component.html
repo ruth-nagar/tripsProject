@@ -1,0 +1,20 @@
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th>שם פרטי</th>
+            <th>שם משפחה</th>
+            <th>טלפון</th>
+            <th>כתובת מייל</th>
+            <th>סיסמא</th>
+            <th>תעודת עזרה ראשונה</th>
+        </tr>
+        <tr *ngFor="let users of this.userService.allUsers">
+            <th>{{users.UserFirstName}}</th>
+            <th>{{users.UserLastName}}</th>
+            <th>{{users.UserPhone}}</th>
+            <th>{{users.UserEmail}}</th>
+            <th>{{users.Password}}</th>
+            <th>{{users.FirstAidCertificate}}</th>
+        </tr>
+    </thead>
+</table>

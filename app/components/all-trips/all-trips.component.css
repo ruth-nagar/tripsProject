@@ -1,0 +1,153 @@
+.filter,
+p {
+    direction: rtl;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    display: flex;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  :root{
+    --color: 78, 230, 118;
+    --color: 219, 75, 207;
+    --color: 128, 110, 240;
+  }
+  body{
+    background: #FFFFDD;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+  }
+  .cards{
+    display: flex;
+    gap: 50px;
+
+  }
+
+  .cards .card{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.2),
+                20px 20px 40px rgba(0,0,0,0.15),
+               -10px -10px 20px rgba(255,255,255,0.4),
+               -20px -20px 40px rgba(255,255,255,0.3),
+          inset 10px 10px 20px rgba(0,0,0,0.2),
+          inset 20px 20px 40px rgba(0,0,0,0.15),
+          inset -10px -10px 10px rgba(255,255,255,0.4),
+          inset -20px -20px 20px rgba(255,255,255,0.3);
+    transition: 0.3s ease;
+  }
+  
+  .cards .card.card--one{
+   border-radius: 61% 39% 70% 30% / 38% 51% 49% 62% ;
+    --color: 78, 230, 118;
+    color: rgb(var(--color));
+  }
+  .cards .card.card--two{
+   border-radius: 64% 36% 60% 40% / 28% 71% 29% 72% ;
+    --color: 219, 75, 207;
+    color: rgb(var(--color));
+  }
+  .cards .card.card--three{
+   border-radius: 38% 62% 70% 30% / 58% 63% 37% 42%  ;
+    --color: 128, 110, 240;
+    color: rgb(var(--color));
+  } 
+  .cards .card:hover{
+    border-radius: 50%;
+  }
+  
+  .content{
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+  .card-num{
+    width: 40px;
+    height: 40px;
+    box-shadow: 5px 5px 7px rgba(0,0,0,0.1),
+                7px 7px 10px rgba(0,0,0,0.05),
+               -5px -5px 7px rgba(255,255,255,0.2),
+               -7px -7px 10px rgba(255,255,255,0.1),
+          inset 5px 5px 7px rgba(0,0,0,0.1),
+          inset 7px 7px 10px rgba(0,0,0,0.05),
+          inset -5px -5px 5px rgba(255,255,255,0.2),
+          inset -7px -7px 7px rgba(255,255,255,0.1);
+    border-radius: 61% 39% 70% 30% / 38% 51% 49% 62% ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cards .card::before,
+  .cards .card::after{
+    content: "";
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    border-radius: 50%;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.2),
+                -5px -5px 15px rgba(255,255,255,0.2),
+                inset 5px 5px 15px rgba(0,0,0,0.2),
+                inset -5px -5px 15px rgba(255,255,255,0.2);
+  }
+  .cards .card::after{
+    width: 10px;
+    height: 10px;
+    top: 55px;
+    left: 55px;
+     box-shadow: 2px 2px 4px rgba(0,0,0,0.1),
+                -2px -2px 4px rgba(255,255,255,0.4),
+                inset 2px 2px 4px rgba(0,0,0,0.1),
+                inset -2px -2px 4px rgba(255,255,255,0.4);
+  }
+  .card-inner{
+    flex: 1;
+    padding-top: 30px;
+    text-align: center;
+    color: #3a3a3a;
+    font-size: 18px;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .card-inner p{
+    flex: 1;
+    text-shadow: 1px 2px 6px rgba(0,0,0,0.6);
+  }
+  ::selection {
+    color: #FFF;
+    background: rgb(var(--color));
+  }
+  .card-inner button{
+    min-width: 100px;
+    height: 35px;
+    line-height:35px;
+    border: 1px solid rgb(var(--color));
+    color: rgb(var(--color));
+    background: rgba(var(--color),0.1);
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.2s;
+  }
+  .card-inner button:hover{
+    color: #FFF;
+    background: rgba(var(--color),1);
+  }

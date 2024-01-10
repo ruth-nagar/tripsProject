@@ -1,0 +1,24 @@
+<div onload="document.getElementById('id01').style.display='block'" id="id01" class="modal login-dark">
+    <form method="post modal-content animate" [formGroup]="signInForm!" (ngSubmit)="existUser()">
+        <div class="form-group">
+            <input class="form-control" type="email" placeholder="כתובת מייל" formControlName="userEmail"
+                [(ngModel)]="mail" /><br>
+            <div *ngIf="getUserEmail.invalid && (getUserEmail.dirty||getUserEmail.touched)">
+                <p *ngIf="getUserEmail.hasError('required')">שדה חובה</p>
+                <p *ngIf="getUserEmail.hasError('pattern') && !getUserEmail.hasError('required')">כתובת מייל שגויה</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" placeholder="סיסמא" formControlName="userPassword"
+                [(ngModel)]="password"><br>
+            <div *ngIf="getUserPassword.invalid && (getUserPassword.dirty||getUserPassword.touched)">
+                <p *ngIf="getUserPassword.hasError('required')">שדה חובה</p>
+                <p *ngIf="getUserPassword.hasError('pattern') && !getUserPassword.hasError('required')">סיסמא שגויה</p>
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <input class="btn btn-primary btn-block" type="submit" [disabled]="signInForm.invalid" />
+            </div>
+    <!-- </form> -->
+</div>
+<router-outlet></router-outlet>
+<!-- להוסיף שליחת פרמטר user לקומפוננטת home -->

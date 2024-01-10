@@ -1,0 +1,67 @@
+<form [formGroup]="updateTrip!" (ngSubmit)="okForm()">
+    <input type="number" placeholder="קוד טיול" formControlName="CodeTrip" [disabled]="true" /><br>
+    <div *ngIf="getCodeTrip.invalid && (getCodeTrip.dirty||getCodeTrip.touched)">
+        <p *ngIf="getCodeTrip.hasError('required')">שדה חובה</p>
+        <p *ngIf="getCodeTrip.hasError('checkNumber')&& !getCodeTrip.hasError('required')">שדה זה יכול להכיל מספרים בלבד
+        </p>
+    </div>
+    <input type="text" placeholder="יעד" formControlName="Target" /><br>
+    <div *ngIf="getTarget.invalid && (getTarget.dirty||getTarget.touched)">
+        <p *ngIf="getTarget.hasError('required')">שדה חובה</p>
+        <p *ngIf="getTarget.hasError('checkName')&& !getTarget.hasError('required')">שדה זה יכול להכיל אותיות בעברית
+            בלבד</p>
+    </div>
+    <!-- <input type="number" placeholder="קוד סוג" formControlName="CodeType" /><br>
+    <div *ngIf="getCodeType.invalid && (getCodeType.dirty||getCodeType.touched)">
+        <p *ngIf="getCodeType.hasError('required')">שדה חובה</p>
+        <p *ngIf="getCodeType.hasError('checkNumber')&& !getCodeType.hasError('required')">שדה זה יכול להכיל מספרים בלבד
+        </p>
+    </div> -->
+    <select (change)="elsetypetrip()" type="text" placeholder="שם סוג" formControlName="typeName">
+        <option *ngFor="let o of this.typeService.allTypes">{{o.NameTrip}}</option>
+        <option>אחר</option>
+    </select><br>
+    <div [hidden]="!this.inputElse"><label class="input-label">סוג טיול נוסף</label>
+        <input type="text" formControlName="typeName" required />
+        <button (click)="addTypeTrip()">הוסף</button>
+    </div>
+
+    <input type="date" placeholder="תאריך" formControlName="DateTrip" /><br>
+    <div *ngIf="getDateTrip.invalid && (getDateTrip.dirty||getDateTrip.touched)">
+        <p *ngIf="getDateTrip.hasError('required')">שדה חובה</p>
+        <p *ngIf="getDateTrip.hasError('checkDate')&& !getDateTrip.hasError('required')">תאריך לא חוקי</p>
+    </div>
+    <input type="text" placeholder="שעת יציאה" formControlName="LeavingTime" /><br>
+    <div *ngIf="getLeavingTime.invalid && (getLeavingTime.dirty||getLeavingTime.touched)">
+        <p *ngIf="getLeavingTime.hasError('required')">שדה חובה</p>
+    </div>
+    <input type="number" placeholder="משך הטיול בשעות" formControlName="DurationInHour" /><br>
+    <div *ngIf="getDurationInHour.invalid && (getDurationInHour.dirty||getDurationInHour.touched)">
+        <p *ngIf="getDurationInHour.hasError('required')">שדה חובה</p>
+        <p *ngIf="getDurationInHour.hasError('min')&& !getDurationInHour.hasError('required')">משך טיול מינימלי 3 שעות
+        </p>
+        <p
+            *ngIf="getDurationInHour.hasError('max')&& !getDurationInHour.hasError('required')&&!getDurationInHour.hasError('min')">
+            משך טיול מקסימלי 12 משעות</p>
+    </div>
+    <input type="number" placeholder="מספר מקומות פנויים" formControlName="AvailableSits" /><br>
+    <div *ngIf="getAvailableSits.invalid && (getAvailableSits.dirty||getAvailableSits.touched)">
+        <p *ngIf="getAvailableSits.hasError('required')">שדה חובה</p>
+        <p *ngIf="getAvailableSits.hasError('min')&& !getDurationInHour.hasError('required')">ערך לא חוקי</p>
+    </div>
+    <input type="number" placeholder="מחיר" formControlName="Price" /><br>
+    <div *ngIf="getPrice.invalid && (getPrice.dirty||getPrice.touched)">
+        <p *ngIf="getPrice.hasError('required')">שדה חובה</p>
+        <p *ngIf="getPrice.hasError('min')&& !getPrice.hasError('required')">מחיר מינימלי גדול מ-0</p>
+        <p *ngIf="getPrice.hasError('max')&& !getPrice.hasError('required')&&!getPrice.hasError('min')">מחיר מקסימלי
+            1500 ש"ח</p>
+    </div>
+    <input type="file" placeholder="בחירת תמונה" formControlName="Picture" (change)="changesrc()">
+    <div *ngIf="getPicture.invalid && (getPicture.dirty||getPicture.touched)">
+        <p *ngIf="getPicture.hasError('required')">שדה חובה</p>
+    </div><br>
+    <input type="checkbox" formControlName="isAidCertificate" /><label>תעודת עזרה ראשונה</label><br>
+    <div *ngIf="getisAidCertificate.invalid && (getisAidCertificate.dirty||getisAidCertificate.touched)">
+    </div>
+    <input type="submit" [disabled]="updateTrip.invalid" />
+</form>

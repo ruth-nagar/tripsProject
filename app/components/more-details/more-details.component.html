@@ -1,0 +1,12 @@
+<div>
+    <p>קוד טיול:{{MyTrip.CodeTrip}}</p>
+    <p>יעד הטיול:{{MyTrip.Target}}</p>
+    <p>שעת יציאה:{{MyTrip.LeavingTime}}</p>
+    <p>משך זמן הטיול:{{MyTrip.DurationInHour}}</p>
+    <p>מספר מקומות שנותרו:{{MyTrip.AvailableSits}}</p>
+    <p>מחיר:{{MyTrip.Price}}</p>
+    <img [src]="MyTrip.Picture" width="70px">
+    <input type="button" value="להזמנת מקומות" routerLink="/orderPlaces/{{MyTrip.CodeTrip}}">
+</div>
+<router-outlet></router-outlet>
+<input type="button" value="פחות פרטים" (click)="backMe()">

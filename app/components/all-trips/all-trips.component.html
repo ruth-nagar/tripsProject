@@ -1,0 +1,19 @@
+<div class="all">
+    <select (change)="filter()" [(ngModel)]="choosen">
+        <option>כל הטיולים</option>
+        <option *ngFor="let t of this.typesServise.allTypes">{{t.NameTrip}}</option>
+    </select>
+    <div class="cards">
+        <div class="card card--one" *ngFor="let trip of  this.allTrips"
+            style="background-image: url(../../../assets/images/{{trip.Picture}});">
+            <div class="content">
+                <div class="card-num">{{trip.Target}}</div>
+                <div class="card-inner">
+                    <p>{{trip.DateTrip | date: 'dd/MM/yyyy'}}</p>
+                    <button routerLink="moreDetails/{{trip.CodeTrip}}">פרטים נוספים</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
